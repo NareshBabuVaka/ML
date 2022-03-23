@@ -1,0 +1,44 @@
+*{
+    font-family: play;
+}
+
+.box{
+    position: obsolute;
+    top: 50%;
+    left: 50%;
+     transform: translate(-60%, -10%);
+    width: 800px;
+    padding: 50px 50px 50px 50px;
+    box-sizing: border-box;
+    background: rgba(9, 145, 187, 0.4);
+    box-shadow: 0 15px 25px rgba(0,0,0,1);
+    margin-left: 700px;
+    margin-top: 150px;
+}
+
+h2{
+    text-align: center;
+    color: brown;
+}
+
+#i{
+    text-align: center;
+    margin-left: 100px;
+    color: rgb(255, 0, 140);
+    padding: 10px 10px 10px 10px;
+}
+
+.MyValues {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+// #s{
+//     box-sizing: border-box;
+//     position: obsolute;
+//     top: 50%;
+//     left: 50%;
+
+
+// }

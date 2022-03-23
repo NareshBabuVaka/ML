@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Naresh",
+      "lastName": "Vaka",
+      "selectProfession": "Student",
+      "chooseType": "Graduate"
+    },
+    {
+      "firstName": "Mallik",
+      "lastName": "Katkam",
+      "selectProfession": "Student",
+      "chooseType": "Post Graduate",
+      "id": 2
+    },
+     
+    {
+      "id": 4,
+      "firstName": "Sravan",
+      "lastName": "Doddi",
+      "selectProfession": "Teacher",
+      "chooseType": "Maths"
+    },
+    
+    {
+      "id": 6,
+      "firstName": "Rajinikanth",
+      "lastName": "Ache",
+      "selectProfession": "Teacher",
+      "chooseType": "Maths"
+    },
+     
+    {
+      "id": 8,
+      "firstName": "Raghu",
+      "lastName": "Vaka",
+      "selectProfession": "Student",
+      "chooseType": "Graduate"
+    }
+  ]
+}
