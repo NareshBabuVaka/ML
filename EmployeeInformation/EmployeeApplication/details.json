@@ -8,33 +8,37 @@
       "chooseType": "Graduate"
     },
     {
+      "id": 2,
+      "firstName": "Rajini",
+      "lastName": "Achee",
+      "selectProfession": "Administrator",
+      "chooseType": "Officer"
+    },
+    {
+      "id": 3,
+      "firstName": "Sathish",
+      "lastName": "Reddy",
+      "selectProfession": "Student",
+      "chooseType": "Post Graduate"
+    },
+    {
+      "id": 4,
       "firstName": "Mallik",
       "lastName": "Katkam",
       "selectProfession": "Student",
-      "chooseType": "Post Graduate",
-      "id": 2
+      "chooseType": "Post Graduate"
     },
-     
     {
-      "id": 4,
+      "id": 5,
       "firstName": "Sravan",
       "lastName": "Doddi",
       "selectProfession": "Teacher",
       "chooseType": "Maths"
     },
-    
     {
       "id": 6,
-      "firstName": "Rajinikanth",
-      "lastName": "Ache",
-      "selectProfession": "Teacher",
-      "chooseType": "Maths"
-    },
-     
-    {
-      "id": 8,
-      "firstName": "Raghu",
-      "lastName": "Vaka",
+      "firstName": "Srikanth",
+      "lastName": "vaka",
       "selectProfession": "Student",
       "chooseType": "Graduate"
     }

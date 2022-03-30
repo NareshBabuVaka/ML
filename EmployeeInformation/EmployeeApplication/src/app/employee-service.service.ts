@@ -9,7 +9,6 @@ import { map } from 'rxjs/operators'
 })
 export class EmployeeServiceService {
 
-  // private url = "http://localhost:3000/Employee";
 
 
 
@@ -17,18 +16,6 @@ export class EmployeeServiceService {
 
   constructor(private http: HttpClient) { }
 
-
-
-  // getAllDetails() {
-  //   return this.http.get<Employee[]>(this.url)
-  // }
-
-
-
-
-  // createEmployee(employee: Employee): Observable<object> {
-  //   return this.http.post(`${this.url}` + 'createEmployee', employee);
-  // }
 
 
   postUser(data: any) {
@@ -41,11 +28,31 @@ export class EmployeeServiceService {
 
   }
 
-  getUsers() {
+  getUser() {
     return this.http.get('http://localhost:3000/posts').pipe(map((res: any) => {
 
       return res;
 
     }))
   }
+
+  deleteUser(id: number) {
+
+    return this.http.delete('http://localhost:3000/posts/' + id).pipe(map((res: any) => {
+
+      return res;
+    }))
+  }
+
+
+  updateUser(data: any, id: number) {
+
+    return this.http.put('http://localhost:3000/posts/' + id, data).pipe(map((res: any) => {
+
+      return res;
+
+    }))
+
+  }
+
 }

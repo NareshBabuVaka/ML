@@ -1,9 +1,9 @@
- <nav class="navbar navbar-light bg-primary">
+<nav class="navbar navbar-light bg-primary">
     <div class="container-fluid">
         <h1 style="color: aliceblue;">User Infomation in Table</h1>
         <div class="d-flex">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add
-                details</button>
+            <button (click)="clickAddUser()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="btn btn-success">Add User details</button>
         </div>
     </div>
 </nav>
@@ -15,16 +15,23 @@
             <th scope="col">Last Name</th>
             <th scope="col">Select Profession</th>
             <th scope="col">Choose Type</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor = "let row of employeeData">
+        <tr *ngFor="let row of employeeData">
             <td>{{row.id}}</td>
             <td>{{row.firstName}}</td>
             <td>{{row.lastName}}</td>
             <td>{{row.selectProfession}}</td>
             <td>{{row.chooseType}}</td>
+
+            <td>
+                <button (click)=onEdit(row) type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    class="btn btn-info">Update</button>
+                <button (click)="deleteUser(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -38,7 +45,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            
+
             <div class="modal-body">
                 <form [formGroup]="loginForm">
                     <div class="form-group">
@@ -46,87 +53,70 @@
                         <input type="text" formControlName="firstName" class="form-control" id="firstName"
                             placeholder="First Name">
 
-                            <div *ngIf ="loginForm.controls.firstName.invalid && (loginForm.controls.firstName.dirty || loginForm.controls.firstName.touched)" class="error">
-                                <div *ngIf = "loginForm.controls.firstName.hasError('pattern')" class="text-danger">Enter only AlphaNumerics</div>
-                                <div *ngIf = "loginForm.controls.firstName.hasError('required')" class="text-danger">First Name is required</div>
-                                <div *ngIf = "loginForm.controls.firstName.hasError('maxlength')" class="text-danger">Allow only Alpha numeric and Max length 8</div>
-                           </div>
+                        <div *ngIf="loginForm.controls.firstName.invalid && (loginForm.controls.firstName.dirty || loginForm.controls.firstName.touched)"
+                            class="error">
+                            <div *ngIf="loginForm.controls.firstName.hasError('pattern')" class="text-danger">Enter only
+                                AlphaNumerics</div>
+                            <div *ngIf="loginForm.controls.firstName.hasError('required')" class="text-danger">First
+                                Name is required</div>
+                            <div *ngIf="loginForm.controls.firstName.hasError('maxlength')" class="text-danger">Allow
+                                only Alpha numeric and Max length 8</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName">LastName:</label>
                         <input type="text" formControlName="lastName" class="form-control" id="lastName"
                             placeholder="Last Name">
-                            <div *ngIf ="loginForm.controls.lastName.invalid && (loginForm.controls.lastName.dirty || loginForm.controls.lastName.touched)" class="error">
-                                <div *ngIf = "loginForm.controls.lastName.hasError('pattern')" class="text-danger">Enter only AlphaNumerics</div>
-                                <div *ngIf = "loginForm.controls.lastName.hasError('required')" class="text-danger">Last Name is required</div>
-                                <div *ngIf = "loginForm.controls.lastName.hasError('maxlength')" class="text-danger">Allow only Alpha numeric and Max length 8</div>
-                           </div>
-                    </div>
-
-
-                    
-
-                    <div class="form-group">
-
-                        <label>SelectProfession : </label>
-                        <select id="s" formControlName="selectProfession" class="form-control" placeholder="Select Profession">
-
-                            
-                            <option>--select profession--</option>
-                            <option>Teacher</option>
-                            <option>Student</option>
-                            <option>Administrator</option>
-                        </select>
-                        <div *ngIf ="loginForm.controls.selectProfession.invalid && (loginForm.controls.selectProfession.dirty || loginForm.controls.selectProfession.touched)" class="error">
-                            <div *ngIf = "loginForm.controls.selectProfession.hasError('required')" class="text-danger">Profession is required</div>
+                        <div *ngIf="loginForm.controls.lastName.invalid && (loginForm.controls.lastName.dirty || loginForm.controls.lastName.touched)"
+                            class="error">
+                            <div *ngIf="loginForm.controls.lastName.hasError('pattern')" class="text-danger">Enter only
+                                AlphaNumerics</div>
+                            <div *ngIf="loginForm.controls.lastName.hasError('required')" class="text-danger">Last Name
+                                is required</div>
+                            <div *ngIf="loginForm.controls.lastName.hasError('maxlength')" class="text-danger">Allow
+                                only Alpha numeric and Max length 8</div>
                         </div>
- 
                     </div>
                     <div class="form-group">
-                        <label>ChooseType : </label>
-                        <select formControlName="chooseType" class="form-control" placeholder="Choose Type">
 
-                            
-                            
-                            <optgroup label="Teacher">
-
-                                <option value="Maths">Maths</option>
-                                <option value="Physics">Physics</option>
-                                <option value="Chemistry">Chemistry
-                            </optgroup>
-
-                            <optgroup label="Student">
-                                <option value="Graduate">Graduate</option>
-                                <option value="Post Graduate">Post Graduate</option>
-                            </optgroup>
-
-                            <optgroup label="Administrator">
-                                <option value="Officer">Officer</option>
-                                <option value="Assistant">Assistant</option>
-                            </optgroup>
+                        <label>SelectProfession : </label> &nbsp;
+                        <select id="selectProfession" formControlName="selectProfession" (change)="changeTestType()">
+                            <option *ngFor="let tType of testTypes">{{tType}}</option>
                         </select>
 
-                        <div *ngIf ="loginForm.controls.chooseType.invalid && (loginForm.controls.chooseType.dirty || loginForm.controls.chooseType.touched)" class="error">
-                            <div *ngIf = "loginForm.controls.chooseType.hasError('required')" class="text-danger">Type is required</div>
-                             </div>
-                            
-                        
+                        <div *ngIf="loginForm.controls.selectProfession.invalid && (loginForm.controls.selectProfession.dirty || loginForm.controls.selectProfession.touched)"
+                            class="error">
+                            <div *ngIf="loginForm.controls.selectProfession.hasError('required')" class="text-danger">
+                                Profession is required</div>
+                        </div>
+
                     </div>
-                    <!-- <input id="i" type="submit" name="Submit" value="Submit"> -->
-                    
+                    <div class="form-group">
+                        <label>ChooseType : </label> &nbsp;
+
+                        <select id="chooseType" formControlName="chooseType"   >
+                            <option *ngFor="let tName of currentTestNames">{{tName}}</option>
+                        </select>
+                        <div *ngIf="loginForm.controls.selectProfession.invalid && (loginForm.controls.selectProfession.dirty || loginForm.controls.selectProfession.touched)"
+                            class="error">
+                            <div *ngIf="loginForm.controls.selectProfession.hasError('required')" class="text-danger">
+                                Type is required</div>
+                        </div>
+                    </div>
                     <div class="modal-footer">
-    
+
                         <button type="button" id="cancel" class="btn btn-secondary"
                             data-bs-dismiss="modal">Close</button>
-    
-                        <button type="submit" [disabled]="loginForm.invalid" (click)="postUserDetails()"
+
+                        <button  *ngIf="showAdd" [disabled]="loginForm.invalid" (click)="postUserDetails()"
                             class="btn btn-primary">Submit</button>
+
+
+                        <button type="button" *ngIf="showUpdate" [disabled]="loginForm.invalid"
+                            (click)="updateUserDetails()" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
 
         </div>
-        <!-- <div class="modal-footer"><button type="button" class="btn btn-secondary"
-                data-bs-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save
-                changes</button></div>-->
-    </div> 
+    </div>

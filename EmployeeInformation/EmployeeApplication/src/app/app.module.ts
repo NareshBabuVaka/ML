@@ -3,18 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EmployeeShowComponent } from './employee-show/employee-show.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EmpComponent } from './emp/emp.component'
+import { EmpComponent } from './emp/emp.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
-    EmployeeShowComponent,
     EmpComponent,
   ],
   imports: [
@@ -22,7 +19,8 @@ import { EmpComponent } from './emp/emp.component'
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

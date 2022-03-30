@@ -1,0 +1,12 @@
+{
+  "posts": [
+     
+    {
+      "id": 1,
+      "firstName": "Babu",
+      "lastName": "Vaka",
+      "selectProfession": "Student",
+      "chooseType": "Post Graduate"
+    }
+  ] 
+}
